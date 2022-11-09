@@ -82,9 +82,8 @@ jobs:
             exit 1
           fi
 
-          echo "::set-output name=version::$version_in_release"
-          echo "::set-output name=testing_version::$version_in_release_candidate"
-          
+          echo "version::$version_in_release" >> $GITHUB_OUTPUT
+          echo "testing_version::$version_in_release_candidate" >> $GITHUB_OUTPUT
       - name: Compare version with Dockerhub latest
         id: version
         run: |
