@@ -45,7 +45,7 @@ jobs:
           if [[ ${{ github.ref_name }} == release/v* ]]; then 
             echo "ref=${{github.ref_name}}" >> $GITHUB_OUTPUT
           else
-            echo "ref>>terraform" >> $GITHUB_OUTPUT
+            echo "ref=terraform" >> $GITHUB_OUTPUT
           fi
 
   get-testing-version:

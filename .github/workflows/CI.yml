@@ -622,7 +622,7 @@ jobs:
           cat testing-framework/terraform/test-case-batch
       - name: Get TTL_DATE for cache
         id: date
-        run: echo "ttldate::$(date -u -d "+7 days" +%s)" >> $GITHUB_OUTPUT
+        run: echo "ttldate=$(date -u -d "+7 days" +%s)" >> $GITHUB_OUTPUT
 
       - name: Restore aotutil
         uses: actions/cache@v3

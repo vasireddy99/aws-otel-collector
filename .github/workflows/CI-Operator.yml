@@ -138,7 +138,7 @@ jobs:
 
       - name: Get TTL_DATE for cache
         id: date
-        run: echo "ttldate::$(date -u -d "+7 days" +%s)" >> $GITHUB_OUTPUT
+        run: echo "ttldate=$(date -u -d "+7 days" +%s)" >> $GITHUB_OUTPUT
 
       # Used to set the input string that will be used for comparison in the subsequent
       # versioning step. This is needed since the inputs.version context will be non existent
@@ -147,9 +147,9 @@ jobs:
         id: inputString
         run: |
           if [[ ${{ github.event_name == 'push' }} ]]; then
-            echo "INPUT_VER::''" >> $GITHUB_OUTPUT
+            echo "INPUT_VER=''" >> $GITHUB_OUTPUT
           else
-            echo "INPUT_VER::${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+            echo "INPUT_VER=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
           fi
 
       - run: ls -R
@@ -160,9 +160,9 @@ jobs:
         run: |
           if [[ ${{ github.event_name }} == 'push' ]] || [[ ${{ steps.inputString.outputs.INPUT_VER }} == '' ]]; then
             version="$(cat VERSION)-$(git rev-parse --short HEAD)"
-            echo "version::$version" >> $GITHUB_OUTPUT
+            echo "version=$version" >> $GITHUB_OUTPUT
           else
-            echo "version::${{ steps.inputString.outputs.INPUT_VER }}" >> $GITHUB_OUTPUT
+            echo "version=${{ steps.inputString.outputs.INPUT_VER }}" >> $GITHUB_OUTPUT
           fi     
 
       - name: get Operator image tag
