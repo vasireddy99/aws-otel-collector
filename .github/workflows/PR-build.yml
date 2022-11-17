@@ -209,8 +209,8 @@ jobs:
         id: set-matrix
         run: | 
           matrix=$(python e2etest/get-testcases.py local_matrix)
-          echo "::set-output name=matrix::$matrix"
-          
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
       - name: List testing suites
         run: |
           echo ${{ steps.set-matrix.outputs.matrix }}

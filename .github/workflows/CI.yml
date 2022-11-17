@@ -679,7 +679,7 @@ jobs:
         if: steps.cache_packages.outputs.cache-hit == 'true'
         run: |
           ssm_pkg_version=$(cat $PACKAGING_ROOT/VERSION)
-          echo "::set-output name=ssm_pkg_version::$ssm_pkg_version"
+          echo "ssm_pkg_version=$ssm_pkg_version" >> $GITHUB_OUTPUT
       - name: Rollback SSM default version
         if: steps.cache_packages.outputs.cache-hit == 'true'
         run: |
