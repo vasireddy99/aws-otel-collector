@@ -50,9 +50,3 @@ jobs:
       - name: Version checking
         id: version
         run: VERSION="${{ github.event.inputs.version }}" bash tools/release/adot-operator-images-mirror/version-check.sh
-
-      - name: Mirror ADOT operator
-        if: ${{ steps.version.outputs.update-operator == 'true' }}
-        run: cd tools/release/adot-operator-images-mirror && go run ./
-        env:
-          AWS_SDK_LOAD_CONFIG: true
