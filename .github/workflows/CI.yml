@@ -71,9 +71,9 @@ jobs:
         id: setRef
         run: |
           if [[ ${{ github.ref_name }} == release/v* ]]; then 
-            echo "{ref}={${{github.ref_name}}}" >> $GITHUB_OUTPUT
+            echo "ref=${{github.ref_name}}" >> $GITHUB_OUTPUT
           else
-            echo "{ref}={terraform}" >> $GITHUB_OUTPUT
+            echo "ref=terraform" >> $GITHUB_OUTPUT
           fi
 
   build-aotutil:
@@ -454,7 +454,7 @@ jobs:
           version="$(cat VERSION)-$(git rev-parse --short HEAD)"
           echo $version > $PACKAGING_ROOT/VERSION
           cat $PACKAGING_ROOT/VERSION
-          echo "{version}={$version}" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
 
   e2etest-release:
     runs-on: ubuntu-latest
