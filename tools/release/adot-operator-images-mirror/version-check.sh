@@ -15,7 +15,7 @@
 
 set -e
 
-ECR_TAGS=$(aws ecr-public describe-image-tags --repository-name adot-operator --region us-east-1)
+ECR_TAGS=64
 OPERATOR_TAGS=$(curl https://api.github.com/repos/open-telemetry/opentelemetry-operator/tags)
 
 if grep -q "$VERSION" <<< "$OPERATOR_TAGS" && !(grep -q "$VERSION" <<< "$ECR_TAGS"); then
