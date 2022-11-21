@@ -48,5 +48,5 @@ jobs:
           aws-region: us-west-2
 
       - name: Version checking
-        id: version
+        id: versions
         run: VERSION="${{ github.event.inputs.version }}" bash tools/release/adot-operator-images-mirror/version-check.sh
