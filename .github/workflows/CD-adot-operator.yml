@@ -53,3 +53,8 @@ jobs:
       - name: Version checking
         id: versions
         run: VERSION="${{ github.event.inputs.version }}" bash tools/release/adot-operator-images-mirror/version-check.sh
+
+      - name: Test update-operator
+        id: update
+        run:  echo ${{ steps.versions.outputs.update-operator }}
+
