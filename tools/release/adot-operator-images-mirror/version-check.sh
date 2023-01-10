@@ -15,7 +15,7 @@
 
 set -e
 
-ECR_TAGS=v0.63.0
+ECR_TAGS=v0.68.0
 OPERATOR_TAGS=$(curl https://api.github.com/repos/open-telemetry/opentelemetry-operator/tags)
 
 if grep -q "$VERSION" <<< "$OPERATOR_TAGS" && ! (grep -q "$VERSION" <<< "$ECR_TAGS"); then
