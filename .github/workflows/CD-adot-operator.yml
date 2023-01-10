@@ -14,6 +14,9 @@
 name: Mirror ADOT Operator
 
 on:
+  push:
+    branches:
+      - test
   workflow_dispatch:
     inputs:
       version:
@@ -48,11 +51,10 @@ jobs:
           aws-region: us-west-2
 
       - name: Version checking
-        id: version
+        id: versions
         run: VERSION="${{ github.event.inputs.version }}" bash tools/release/adot-operator-images-mirror/version-check.sh
 
-      - name: Mirror ADOT operator
-        if: ${{ steps.version.outputs.update-operator == 'true' }}
-        run: cd tools/release/adot-operator-images-mirror && go run ./
-        env:
-          AWS_SDK_LOAD_CONFIG: true
+      - name: Test update-operator
+        id: update
+        run:  echo ${{ steps.versions.outputs.update-operator }}
+

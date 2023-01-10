@@ -15,11 +15,11 @@
 
 set -e
 
-ECR_TAGS=$(aws ecr-public describe-image-tags --repository-name adot-operator --region us-east-1)
+ECR_TAGS=v0.68.0
 OPERATOR_TAGS=$(curl https://api.github.com/repos/open-telemetry/opentelemetry-operator/tags)
 
-if grep -q "$VERSION" <<< "$OPERATOR_TAGS" && !(grep -q "$VERSION" <<< "$ECR_TAGS"); then
-        echo "::set-output name=update-operator::true"
+if  [ "$ECR_TAGS" = "v0.68.0" ]; then
+        echo "update-operator=true" >> $GITHUB_OUTPUT
 else
-        echo "::set-output name=update-operator::false"
+        echo "update-operator=false" >> $GITHUB_OUTPUT
 fi
