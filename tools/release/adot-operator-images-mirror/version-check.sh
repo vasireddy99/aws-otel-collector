@@ -18,7 +18,7 @@ set -e
 ECR_TAGS=v0.68.0
 OPERATOR_TAGS=$(curl https://api.github.com/repos/open-telemetry/opentelemetry-operator/tags)
 
-if  "$ECR_TAGS" == "v0.68.0" ; then
+if  [ "$ECR_TAGS" = "v0.68.0" ]; then
         echo "update-operator=true" >> $GITHUB_OUTPUT
 else
         echo "update-operator=false" >> $GITHUB_OUTPUT
