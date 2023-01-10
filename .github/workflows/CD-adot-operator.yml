@@ -14,6 +14,9 @@
 name: Mirror ADOT Operator
 
 on:
+  push:
+    branches:
+      - test
   workflow_dispatch:
     inputs:
       version:
