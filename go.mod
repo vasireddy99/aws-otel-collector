@@ -205,6 +205,7 @@ require (
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
 	github.com/miekg/dns v1.1.50 // indirect
+	github.com/mindprince/gonvml v0.0.0-20190828220739-9ebdce4bb989 // indirect
 	github.com/mistifyio/go-zfs v2.1.2-0.20190413222219-f784269be439+incompatible // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
@@ -331,6 +332,7 @@ require (
 	k8s.io/api v0.26.1 // indirect
 	k8s.io/apimachinery v0.26.1 // indirect
 	k8s.io/client-go v0.26.1 // indirect
+	k8s.io/cri-api v0.21.0 // indirect
 	k8s.io/klog v1.0.0 // indirect
 	k8s.io/klog/v2 v2.80.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20221207184640-f3cff1453715 // indirect
@@ -365,3 +367,5 @@ replace github.com/theupdateframework/go-tuf v0.3.1 => github.com/DataDog/go-tuf
 
 // excluded as DataDog/agent-payload/v5 v5.0.59 has been removed from source directory but is still present in proxy package
 exclude github.com/DataDog/agent-payload/v5 v5.0.59 // indirect
+
+replace github.com/google/cadvisor => github.com/google/cadvisor v0.45.0-containerd-cri
